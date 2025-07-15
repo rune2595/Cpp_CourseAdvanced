@@ -61,10 +61,72 @@ Add more on the go...
 
 Source code for all the projects can be found at this GitHub [wiki](https://github.com/caveofprogramming/advanced-cplusplus/wiki).
 
+All sample code can be found in the repo.
+
+
+__Bold text__
+*Italic text*
+`Inline code`
+```c++
+// Example code block
+#include <iostream>
+
+// Code here!
+
+```
+
+
 ## Section 2: Exceptions<a name="2"></a>
 [Go to top](#top)
 
-### 2.1 Exceptions Basics<a name="2.1"></a>
+The current section describes exception handling for error messages.
 
-And so on...
+### 2.1 Exceptions Basics<a name="2.1"></a>
+[Go to top](#top)
+
+Exceptions are used for error handling.
+
+Errors are called through `throw`, which need a corresponding `catch` in the main code. Multiple catch blocks are needed to handle different types of errors (`int`, `char`, `string`, etc.).
+
+As soon as an exception is thrown, the program jumps to the first catch block that matches the type of the exception. Subsequent catch blocks are not executed.
+
+`throw` creates an object without the need for keyword `new`. `string` objects are caught using a reference. Normally references go out of scope at the end of a function and is not recommended practice, but with exceptions it is different. The compiler will both instantiate and clean up the object.
+
+`throw` throws exceptions all the way out of the call stack until it is caught, i.e., if there is no `catch`, the exception will be thrown out of main too.
+
+### 2.2 Standard Exceptions<a name="2.2"></a>
+[Go to top](#top)
+
+Exceptions can be thrown from within classes. 
+
+C++ has a standard exception class called `std::exception`. This acts as a parent class for many other exceptions, fx. `bad_alloc`. `std::exception` contains a method, `.what()`, giving a string explaining the error.
+
+### 2.3 Custom Exceptions<a name="2.3"></a>
+[Go to top](#top)
+
+Custom exception classes can be derived from the standard exception class available in C++.
+
+It a good custom to name exception related to the error that occurs.
+
+The standard `.what()` contains a `const throw()`. This means that the method cannot throw an exception. Compiler then might be able to optimize, but is likely bad coding. Better to modify and insert it somewhere else.
+
+### 2.4 Exception Catching Order<a name="2.4"></a>
+[Go to top](#top)
+
+Exceptions can have "child/parent"-relationships. It is therefore, important to get the detection order correct. Due to polymorphism (subclasses are also of type of parent class), subclasses can mistakenly be caught as their parent class. This can be solved be trying to catch subclasses before parent classes.
+
+## Section 3: Files<a name="3"></a>
+[Go to top](#top)
+
+The current section describes basic file handling in C++.
+
+### 3.1 Writing Text Files<a name="3.1"></a>
+[Go to top](#top)
+
+It is important to note that header files are likely different depending on compiler. In the course `#include <fstream>` is used, this also works in visual studio.
+
+`ofstream` stands for "output file stream" and initiates a file stream (part of `fstream`). Methods for `ofstream`:
+- `.open`, opens file
+- `.is_open`, checks if file is open
+- `'objectFile' << "TEXT TO ADD" << endl;`, adds lines to file
 
