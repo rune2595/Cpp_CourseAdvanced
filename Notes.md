@@ -65,8 +65,11 @@ All sample code can be found in the repo.
 
 
 __Bold text__
+
 *Italic text*
+
 `Inline code`
+
 ```c++
 // Example code block
 #include <iostream>
