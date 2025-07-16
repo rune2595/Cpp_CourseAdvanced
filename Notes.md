@@ -129,7 +129,62 @@ The current section describes basic file handling in C++.
 It is important to note that header files are likely different depending on compiler. In the course `#include <fstream>` is used, this also works in visual studio.
 
 `ofstream` stands for "output file stream" and initiates a file stream (part of `fstream`). Methods for `ofstream`:
-- `.open`, opens file
-- `.is_open`, checks if file is open
+- `.open()`, opens file
+- `.is_open()`, checks if file is open
 - `'objectFile' << "TEXT TO ADD" << endl;`, adds lines to file
+- `.close()`, closes file
+
+### 3.2 Reading Text Files<a name="3.2"></a>
+[Go to top](#top)
+
+Reading text files requires the same header as writing: `#include <fstream>`.
+
+`ifstream` stands for "input file stream" and opens initializes an existing file. Methods for `ifstream`:
+- `.open()`, opens file
+- `.is_open()`, checks if file is open
+- `.close()`, closes file
+- `.eof()`, stand for 'end of file', can be used in a loop to read until end of file (can also just provide the `ifstream` object)
+
+Function `getline()` exists in `fstream` and is used to read lines in a text file. Can also use the extraction operator `>>`, however, this will only read the first word as spaces delimits the function.
+
+Operators can be overloaded to get new behavior???
+
+### 3.3 Parsing Text Files<a name="3.3"></a>
+[Go to top](#top)
+
+Reading complicated, formatted files can be tedious. Might consider using C-function that are able to do it, as C++ is not designed for this.
+
+Single quotes are used to create a single character literal in C++, different to a string which uses double quotes.
+
+Delimiters can be added to `getline()` as the third input option. However, this can lead to weird behavior.
+
+To surpress non-printed newline characters in file, use `input.get();`. This will get the next character and discard it. In C++11 `input >> ws` will read white space, and will be a more robust solution than `input.get()`.
+
+### 3.4 Structs & Padding<a name="3.4"></a>
+[Go to top](#top)
+
+`structs` are similar to `classes`, but the members are public by default. `structs` are typically used to write to files.
+
+The objects of a `string` class contains pointers to an area of memory, or "stack". Saving a string to a binary file only saves the pointer address, i.e., if a different copy of the proggram is then used to read the file, it will read the address and whatever is stored on that device in that address. This is because `string` is a class rather than a type. Storing text in `char` arrays will read the desired text.
+
+C++ pads `structs` to more efficiently transfer them to and from memory. If the data is to be written literally to a file the padding should be removed. This can be achieved by using a preprocessor directive, `#pragma`, with fx `pack(push, 1)` argument. The 1 tells the program to align the data on single byte boundaries, thereby, removing the padding. `#pragma pack(pop)` turns off the previous command.
+
+### 3.5 Reading & Writing Binary Files<a name="3.5"></a>
+[Go to top](#top)
+
+The extension can be whatever, but a good binary file extension would be ".bin". If read in a text editor will just be a mad collection of data, therefore, an intepreter is needed.
+
+An additional argument `ios::binary` is needed when using `.open()`, otherwise newline (and other) characters will be translated by C++. However, these are simply raw data and should NOT be interpreted as newline (or other) characters.
+
+The "o" in `ofstream` is the same as adding `ios::out` as an argument in `.open()`. Same with "i" in `ifstream` and `ios::in`. Note that with argument `ios::binary` the arguments for open method should be separated by the 'or' operator '|'.
+
+When writing a `struct`, it is the address of the data that should be used as input for `.write()` cast as a `char` pointer. Also, the amount of data should be input as an argument (`sizeof()`). A newer method for casting pointers exist (`reintepret_cast<TYPE TO CAST TO>(ADDRESS TO CAST)`).
+
+A binary file can be read using `.read()`.
+
+## Section 4: Standard Template Library<a name="4"></a>
+[Go to top](#top)
+
+### 4.1 Vectors<a name="4.1"></a>
+[Go to top](#top)
 
