@@ -145,7 +145,7 @@ Reading text files requires the same header as writing: `#include <fstream>`.
 - `.close()`, closes file
 - `.eof()`, stand for 'end of file', can be used in a loop to read until end of file (can also just provide the `ifstream` object)
 
-Function `getline()` exists in `fstream` and is used to read lines in a text file. Can also use the extraction operator `>>`, however, this will only read the first word as spaces delimits the function.
+Function `getline()` exists in `fstream` (note that `#include <string>` is also needed) and is used to read lines in a text file. Can also use the extraction operator `>>`, however, this will only read the first word as spaces delimits the function.
 
 Operators can be overloaded to get new behavior???
 
@@ -187,4 +187,139 @@ A binary file can be read using `.read()`.
 
 ### 4.1 Vectors<a name="4.1"></a>
 [Go to top](#top)
+
+A vector in C++ is a resizeable array. Need to `#inlcude <vector>`. When initiating a vector, the type within the vector should be stated in `<>` after calling it.
+
+``` c++
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<TYPE> TYPEvector(SIZE)
+
+    return 0;
+}
+```
+
+A vector automatically handles memory for you unlike an array. An array is NOT resizeable. The vector is resizeable through the `.push_back()` method. The size can be found using `.size()` giving the actual length of the vector rather than the amount of memory!
+
+Do not try to set elements that are off the end of a vector (i.e., `vector[10] = 1`, for a vector of length 5). This will give unexpected behavior.
+
+Writing
+```c++
+vector<TYPE>::iterator it = vector.begin();
+```
+Will initialize an iterator. Calling the iterator as a pointer (i.e., `*it`) will give the first element. A similar method exists for end, however, this return that points just after the end of the vector. Together, these methods can be used to iterate through a vector. `it++` will increment the iterator. A `for` loop for a vector can then be written as
+```c++
+for(vector<TYPE>::iterator it = vector.begin(); it != vector.end(); it++)
+{
+    // LOOP COMMANDS
+}
+```
+
+Note that in C++11 there is an even nicer way of iterating through vectors.
+
+### 4.2 Vectors & Memory<a name="4.2"></a>
+[Go to top](#top)
+
+The `vector` class manages an array internally, therefore, if a vector is increased to a size larger than the current array, a new array will be created, the old values copied, and new values added. The method `.capacity()` gives the amount of elements the internal array can currently hold. The internal array capacity is doubled when bounds are exceeded. This behavior can be demonstrated by:
+
+```c++
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<double> numbers(0); // Initialize vector of size 0
+
+    cout << "Size: " << numbers.size() << endl;
+
+    int capacity = numbers.capacity(); // Get current internal array capacity
+    cout << "Capacity: " << capacity << endl;
+
+    for(int i = 0; i < 10000; i++)
+    {
+        if(numbers.capacity() != capacity)
+        {
+            capacity = numbers.capacity();
+            cout << "Capacity: " << capacity << endl;
+        }
+
+        numbers.push_back(i);
+    }
+
+    return 0;
+}
+```
+
+This is because the method is trying to guess how big your new array should be based on its current size. Ensures that the insertion time remains as constant as it possibly can, since creating new arrays over and over is time consuming (i.e., if size only increased by one everytime, the loop above would be very slow as a new internal array is created at each step. Doubling the array size instead, reduces the amount of times a new array is created.).
+
+`.clear()` deletes all the elements in the vector resulting in a size of 0, however, the capacity is unchanged.
+
+`.resize()` resizes (duh) the vector to a specific size, without affecting existing elements.
+
+`.reserve()` resizes the internal array (capacity) without changing the size of the vector.
+
+### 4.3 Two-Dimensional Vectors<a name="4.3"></a>
+[Go to top](#top)
+
+To define multidimensional vectors, simply create a vector of vectors.
+```c++
+vector< vector<int> > = 2Dvec(ROWS, vector<int>(COLUMNS, CELL_VALUE));
+```
+
+Importantly, rows do not need to have the same size, behaving like cell arrays in matlab.
+
+Exercise:
+
+Create 2D vector containing the 12 times table.
+
+### 4.4 Lists<a name="4.4"></a>
+[Go to top](#top)
+
+A vector is restricted to insert elements at the end. For a list, elements can be inserted anywhere. Lists are inherently different, as each element also contains pointers to the surrounding elements. This also means that regular indexing is not possible.
+
+`#include <list>` is needed to work with lists.
+
+`.push_back()` is the same as for a vector.
+
+Iterators also work the same as for vector.
+
+`.push_front()` adds element at the front instead of the back.
+
+An iterator is needed to modify elements in the middle. `.insert()` needs the iterator and the value to insert as arguments, then pushes that element in front of the stated iterator.
+
+`.erase()` erases the number at the iterator. Note that the syntax should be
+```c++
+list<TYPE> list;
+
+// ADD ELEMENTS
+
+list<TYPE>::iterator eraseIt = list.begin();
+eraseIt++;
+eraseIt = list.erase(eraseIt);
+```
+To erase the second element in the list. The important thing is reassigning `eraseIt` to have it point to the new element in that position, otherwise the iterator is invalidated.
+
+### 4.5 Maps<a name="4.5"></a>
+[Go to top](#top)
+
+`maps` is like a lookup table, where elements can be retrieved by a key.
+
+Similar to lists and vectors, it is possible to iterate through a `map` using the same syntax.
+
+In basic `map`s keys are unique, i.e., assigning a value to an existing key overwrites the old value.
+
+Accessing a value that is not in the `map`, adds it with value 0.
+
+`.find(KEY)` returns an iterator that points at the right element, or to a point of the end of the `map` if not found. Can be used to check if a key is in the `map` before accessing it, thereby, not adding an unwanted key with value 0.
+
+Map data comes in `pair`s, meaning that a key and a value are tied. A declared `pair` can be inserted into a `map` as follows:
+```c++
+map.insert(pair<KEYTYPE, VALUETYPE>(KEY, VALUE))
+```
+`make_pair()` can be used to create a `pair` corresponding to the `map` types.
 
