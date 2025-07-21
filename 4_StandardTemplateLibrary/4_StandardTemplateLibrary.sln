@@ -11,6 +11,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lists", "Lists\Lists.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Maps", "Maps\Maps.vcxproj", "{CD91FA19-6D8A-482D-BA5E-0604FEDBCC6C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CustomObjectsasMapValues", "CustomObjectsasMapValues\CustomObjectsasMapValues.vcxproj", "{0E9C5083-BA46-494B-ACB6-345BE82215F9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CustomObjectsasMapKeys", "CustomObjectsasMapKeys\CustomObjectsasMapKeys.vcxproj", "{75EA863E-FEBC-4DB0-9105-56738AAF4A39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +55,22 @@ Global
 		{CD91FA19-6D8A-482D-BA5E-0604FEDBCC6C}.Release|x64.Build.0 = Release|x64
 		{CD91FA19-6D8A-482D-BA5E-0604FEDBCC6C}.Release|x86.ActiveCfg = Release|Win32
 		{CD91FA19-6D8A-482D-BA5E-0604FEDBCC6C}.Release|x86.Build.0 = Release|Win32
+		{0E9C5083-BA46-494B-ACB6-345BE82215F9}.Debug|x64.ActiveCfg = Debug|x64
+		{0E9C5083-BA46-494B-ACB6-345BE82215F9}.Debug|x64.Build.0 = Debug|x64
+		{0E9C5083-BA46-494B-ACB6-345BE82215F9}.Debug|x86.ActiveCfg = Debug|Win32
+		{0E9C5083-BA46-494B-ACB6-345BE82215F9}.Debug|x86.Build.0 = Debug|Win32
+		{0E9C5083-BA46-494B-ACB6-345BE82215F9}.Release|x64.ActiveCfg = Release|x64
+		{0E9C5083-BA46-494B-ACB6-345BE82215F9}.Release|x64.Build.0 = Release|x64
+		{0E9C5083-BA46-494B-ACB6-345BE82215F9}.Release|x86.ActiveCfg = Release|Win32
+		{0E9C5083-BA46-494B-ACB6-345BE82215F9}.Release|x86.Build.0 = Release|Win32
+		{75EA863E-FEBC-4DB0-9105-56738AAF4A39}.Debug|x64.ActiveCfg = Debug|x64
+		{75EA863E-FEBC-4DB0-9105-56738AAF4A39}.Debug|x64.Build.0 = Debug|x64
+		{75EA863E-FEBC-4DB0-9105-56738AAF4A39}.Debug|x86.ActiveCfg = Debug|Win32
+		{75EA863E-FEBC-4DB0-9105-56738AAF4A39}.Debug|x86.Build.0 = Debug|Win32
+		{75EA863E-FEBC-4DB0-9105-56738AAF4A39}.Release|x64.ActiveCfg = Release|x64
+		{75EA863E-FEBC-4DB0-9105-56738AAF4A39}.Release|x64.Build.0 = Release|x64
+		{75EA863E-FEBC-4DB0-9105-56738AAF4A39}.Release|x86.ActiveCfg = Release|Win32
+		{75EA863E-FEBC-4DB0-9105-56738AAF4A39}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
