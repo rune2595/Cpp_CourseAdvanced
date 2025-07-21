@@ -323,3 +323,38 @@ map.insert(pair<KEYTYPE, VALUETYPE>(KEY, VALUE))
 ```
 `make_pair()` can be used to create a `pair` corresponding to the `map` types.
 
+### 4.6 Custom Objects as Map Values<a name="4.6"></a>
+[Go to top](#top)
+
+This relates to objecs or classes that are sefl-defined as values in a map.
+
+When defining a class constructor with input parameters, it loses the default constructor that creates the object without input. A map needs to initialize the objects without input and will therefore crash if no extra constructor is defined.
+
+It is not smart to copy pointers when copying an object, otherwise, it still points to the old object.
+
+### 4.7 Custom Objects as Map Keys<a name="4.7"></a>
+[Go to top](#top)
+
+When using custom objects as keys, methods need to be declared `const`. This is due to the iterator returning keys as `const`.
+
+Maps naturally sort content by the keys. Ths is done using the less than operator `<`. However, custom objects do not work with this. An additional method should be defined to handle this.
+
+The method should look like:
+```c++
+bool operatorOPERATORTOOVERLOAD(const OBJECT &OTHEROBJECT) const
+{
+    if(PARAMETER1 == OTHEROBJECT.PARAMETER1)
+    {
+        return PARAMETER2 < OTHEROBJECT.PARAMETER2;
+    }
+    else
+    {
+        return PARAMETER1 < OTHEROBJECT.PARAMETER2;
+    }
+}
+```
+The objects passed to the function as to be marked as a `const` reference `&`. The reference for efficiency to not create a copy, and `const` because we do not want the operator to change the other object. Also the whole method should be declared `const` as the operator should not change the original object either.
+
+Like earlier, using the same key to define a new value in the map, overwrites the old value.
+
+If the key consists of multiple parameters (fx. name and age), both need to be added to the additional method. If not, the `map` will consider only the added parameter as individual, i.e. two objects with same name but different ages will be considered identical.
