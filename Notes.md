@@ -357,4 +357,73 @@ The objects passed to the function as to be marked as a `const` reference `&`. T
 
 Like earlier, using the same key to define a new value in the map, overwrites the old value.
 
-If the key consists of multiple parameters (fx. name and age), both need to be added to the additional method. If not, the `map` will consider only the added parameter as individual, i.e. two objects with same name but different ages will be considered identical.
+If the key consists of multiple parameters (fx. name and age), both need to be added to the additional method. If not, the `map` will consider only the added parameter as individual, i.e. two objects with same name but different ages will be considered identical. To simplify, a unique ID can be assigned and used as the "super parameter". Thereby, eliminating the need for additional conditions in the map sorting method. However, this might not always be possible.
+
+### 4.8 Multimaps<a name="4.8"></a>
+[Go to top](#top)
+
+Multimaps enables storage for duplicate keys, and is also included in the `map` header file. Multimaps does not have an overloaded array subscript type operator, therefore, values can only be added using the `insert` method.
+
+Iterating works the same way as for regular `map`s.
+
+`.find()` can be used to find a value in the `multimap` just like in a `map`. However, to find all identical keys a range needs to be defined. This can be done for a `pair` of iterators as so
+``` c++
+pair<multimap<TYPE1, TYPE2>::iterator, multimap<TYPE1, TYPE2>::iterator> range = MULTIMAP.equal_range(KEY);
+```
+The loop is then defined as
+``` c++
+for(multimap<TYPE1, TYPE2>::iterator it = range.first; it != range.second; it++)
+{
+    // loop commands
+}
+```
+In C++11 additional features allows for simplifications to the code above. `auto` automatically gets the type, i.e., the above can be simplified to
+``` c++
+auto range = MULTIMAP.equal_range(KEY);
+
+for(auto it = range.first; it != range.second; it++)
+{
+    // loop commands
+}
+```
+
+### 4.9 Sets<a name="4.9"></a>
+[Go to top](#top)
+
+A `set` only stores unique elements and orders them. Other contains method similar to a `map`. Trying to insert a duplicated value will fail and original value is kept.
+
+Good at getting rid of duplicates. As elements are unique, the `.count()` method can be used as a `true`/`false` operator as it will either return 1 or 0.
+
+Like for a `map` it is neccessary to overload the less than oprator to compare keys for ordering.
+
+### 4.10 Stacks & Queues<a name="4.10"></a>
+[Go to top](#top)
+
+A `stack` is a "last in-first out" structure. Imagine a pile of planks; it is possible to add to the top, but not the bottom. Therefore, things also should be removed from the top before access to the bottom is obtained.
+
+When storing local variables the memory stack is called, and it works just like a `stack` structure. To access the top of the `stack` simply use `.top()`.
+
+A `queue` works like a queue in real life, i.e., first-come-first-serve. To access front of the `queue` simply use `.front()`. Can also look at the back of the `queue` by using `.back()`.
+
+There is no way to iterate through a stack or a queue, as both already know which element to look at.
+
+The method `.pop()` removes the next in line (top of stack, front of queue).
+
+When accessing an element in a `stack` or a `queue`, use the reference operator `&` for efficiency. Otherwise, the program will create copies and destroy objects, which is very inefficient.
+
+### 4.11 Sorting Vectors, Deque, & Friend<a name="4.11"></a>
+[Go to top](#top)
+
+Vectors can be sorted using the `std` method `sort()`. The method requires the start and end of the vector to be sorted (therfore, it is possible to sort part of a vector). `sort()` can also take function pointers as arguments. This is useful when sorting classes by others in a vector. A function comparing the sorting parameters can then be defined similar to the operator overload method used inside classes. However, a function prototype still needs to be added to the object for it to access private parameters using the keyword `friend`. `friend` basically says, "when you meet a function with this name, it can access our private members".
+
+Generally, it is not efficient to sort a `vector`. Therefore, a `set` is preffered. However, if the sorting is done once at the end, then it is okay.
+
+A `deque` is a double ended queue, which combines the functionalities of a `stack` and a `queue` into one type. Methods have similar names to a `queue`, but enables access to both ends for adding and removing.
+
+### 4.12 STL Complex Data Types<a name="4.12"></a>
+[Go to top](#top)
+
+Nested STL types can be used to represent any datastructure imaginable. `vector`s of `map`s, etc.
+
+Note that simplification if preffered as nested datatypes can become quite messy.
+
