@@ -427,3 +427,39 @@ Nested STL types can be used to represent any datastructure imaginable. `vector`
 
 Note that simplification if preffered as nested datatypes can become quite messy.
 
+## Section 5: Operator Overloading<a name="5"></a>
+[Go to top](#top)
+
+### 5.1 Overloading the Assignment Operator<a name="5.1"></a>
+[Go to top](#top)
+
+Imaging having two objects defined as
+``` c++
+CLASS OBJECT1(INT1, INT2);
+
+CLASS OBJECT2(INT3, INT4);
+```
+Overwriting the second object like
+``` c++
+OBJECT2 = OBJECTS1;
+```
+creates a shallow copy of `OBJECT1`. This is sometimes what you want, but other options exist, fx., a deep copy. Some objects might carry a unique ID, in that case, making a shallow copy will not be desired, as it simply has the same pointers as the source object (i.e., it points to the same memory). A deep copy will point to new memory.
+
+An operator can basically be viewed as a function with to arguments (LHS and RHS). Similarly, a method will always have a minimum of one argument (even when the parenthesis are empty), as the implicit argument received by the method is the object on which it is called.
+
+In case of the assignment operator `=`, it is a binary operator as it takes two arguments. A method can be implemented for a class to change the behavior of operators. The method `.operator=()` is equivalent to `=`.
+
+Importantly,
+``` c++
+CLASS OBJECT2;
+
+OBJECT2 = OBJECT1;
+```
+is different to
+``` c++
+CLASS OBJECT2 = OBJECT1;
+```
+In the first case the assignment operator is called, whereas, the second case utilizes the default copy constructor of the class.
+
+A rule of thumb is if one of a copy constructor, a destructor, or an assignment operator is implemented, the other two should be implemented as well.
+
