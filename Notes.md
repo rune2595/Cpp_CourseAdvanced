@@ -463,3 +463,37 @@ In the first case the assignment operator is called, whereas, the second case ut
 
 A rule of thumb is if one of a copy constructor, a destructor, or an assignment operator is implemented, the other two should be implemented as well.
 
+### 5.2 Printing - Overloading the Left Bit Shift<a name="5.2"></a>
+[Go to top](#top)
+
+Normally when printing private properties of a class, it is neccessary to create a method to access it. However, it would be nice to be able to simply write
+``` c++
+CLASS OBJECT(TYPE1, TYPE2);
+cout << OBJECT << endl;
+```
+In the above code, the left bit shift operator `<<` has two arguments; `cout` and `OBJECT`. `cout` is an object of type `ostream` (output stream).
+
+Operators can be either 'left-right' or 'right-left' associative. Fx. `+` has 'right-left' associativity, meaning operations to the right are done first (see example below).
+``` c++
+int value = 1 + 2 + 3 // will be calculated as 1 + (2 + 3)
+```
+`<<` has 'left-right' associativity, i.e.,
+``` c++
+cout << SOMETHING << endl; // is handled as (cout << SOMETHING) << endl;
+```
+The part in parenthesis returns an object which is a reference to an `ostream` type (in the case of `cout`).
+
+As `cout` is not of type `CLASS`, it cannot be implemented as a method of the class. Therefore, a function has to be defined to create the overload, specifically a `friend` function. The syntax should be
+``` c++
+friend ostream &operator<<(ostream &OUT, const CLASS &OBJECT)
+{
+    OUT << OBJECT.TYPE1 << "optional string" << OBJECT.TYPE2;
+
+    return OUT;
+}
+```
+
+### 5.3 A Complex Number Class<a name="5.3"></a>
+[Go to top](#top)
+
+C++ already contains a class for complex numbers, however, a new one is created to enable operator overloading.
