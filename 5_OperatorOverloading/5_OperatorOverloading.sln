@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OverloadingAssignmentOperat
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OverloadingLeftBitShift", "OverloadingLeftBitShift\OverloadingLeftBitShift.vcxproj", "{D61D1EA9-2D0A-483B-AD42-33B7DE2BEF25}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ComplexNumberClass", "ComplexNumberClass\ComplexNumberClass.vcxproj", "{27D2FAB5-BFEA-4B71-8667-2B2B4B01E2C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{D61D1EA9-2D0A-483B-AD42-33B7DE2BEF25}.Release|x64.Build.0 = Release|x64
 		{D61D1EA9-2D0A-483B-AD42-33B7DE2BEF25}.Release|x86.ActiveCfg = Release|Win32
 		{D61D1EA9-2D0A-483B-AD42-33B7DE2BEF25}.Release|x86.Build.0 = Release|Win32
+		{27D2FAB5-BFEA-4B71-8667-2B2B4B01E2C5}.Debug|x64.ActiveCfg = Debug|x64
+		{27D2FAB5-BFEA-4B71-8667-2B2B4B01E2C5}.Debug|x64.Build.0 = Debug|x64
+		{27D2FAB5-BFEA-4B71-8667-2B2B4B01E2C5}.Debug|x86.ActiveCfg = Debug|Win32
+		{27D2FAB5-BFEA-4B71-8667-2B2B4B01E2C5}.Debug|x86.Build.0 = Debug|Win32
+		{27D2FAB5-BFEA-4B71-8667-2B2B4B01E2C5}.Release|x64.ActiveCfg = Release|x64
+		{27D2FAB5-BFEA-4B71-8667-2B2B4B01E2C5}.Release|x64.Build.0 = Release|x64
+		{27D2FAB5-BFEA-4B71-8667-2B2B4B01E2C5}.Release|x86.ActiveCfg = Release|Win32
+		{27D2FAB5-BFEA-4B71-8667-2B2B4B01E2C5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

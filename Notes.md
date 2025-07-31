@@ -497,3 +497,25 @@ friend ostream &operator<<(ostream &OUT, const CLASS &OBJECT)
 [Go to top](#top)
 
 C++ already contains a class for complex numbers, however, a new one is created to enable operator overloading.
+
+This is done utilizing the knowledge from above.
+
+### 5.4 Overloading Plus<a name="5.4"></a>
+[Go to top](#top)
+
+This will extend on the complex number class created earlier.
+
+Similar to the `<<`-operator, the method can be implemented as a member function or a free-standing function using either `friend` functions or "get" methods.
+
+The addition-operator needs to return a new complex number, as the old numbers are simply `const` input. Input should be stated as references for efficiency.
+
+Using complex numbers as an example, the implementation should be:
+``` c++
+Complex operator+(const Complex& c1, const Complex& c2)
+{
+	return Complex(c1.getReal()+c2.getReal(), c1.getImag()+c2.getImag()) ;
+}
+```
+This assumes that getter functions have been implemented for the class. A similar approach can be used to add a real `double` to a complex number. Note that for this it is neccessary to implement two operators to handle objects on different sides of the operator.
+
+Additional methods have been added for subtraction and multiplication.
