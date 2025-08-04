@@ -519,3 +519,9 @@ Complex operator+(const Complex& c1, const Complex& c2)
 This assumes that getter functions have been implemented for the class. A similar approach can be used to add a real `double` to a complex number. Note that for this it is neccessary to implement two operators to handle objects on different sides of the operator.
 
 Additional methods have been added for subtraction and multiplication.
+
+### 5.5 Overloading Equality Test<a name="5.5"></a>
+[Go to top](#top)
+
+
+
