@@ -47,6 +47,22 @@ int main()
 	cout << num1 * 5.8 << endl; // Display the result of num1 * 5.8
 	cout << 5.8 * num1 << endl; // Display the result of 5.8 * num1
 
+	// Demonstrate the overloaded equality operator
+	Complex num4 = num1;
+
+	if (num1 == num4) {
+		cout << "num1 is equal to num4" << endl; // Display if num1 is equal to num4
+	} else {
+		cout << "num1 is not equal to num4" << endl; // Display if num1 is not equal to num4
+	}
+
+	// Demonstrate the overloaded inequality operator
+	if (num1 != num2) {
+		cout << "num1 is not equal to num2" << endl; // Display if num1 is not equal to num2
+	} else {
+		cout << "num1 is equal to num2" << endl; // Display if num1 is equal to num2
+	}
+
 	return 0;
 }
 

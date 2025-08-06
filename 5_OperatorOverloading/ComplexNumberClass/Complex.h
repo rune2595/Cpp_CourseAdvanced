@@ -39,6 +39,9 @@ public:
 		return imag;
 	}
 
+	bool operator==(const Complex& other) const;
+	bool operator!=(const Complex& other) const;
+
 	void display(); // Method to display the complex number in the format "a + bi"
 };
 

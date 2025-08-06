@@ -61,8 +61,7 @@ Add more on the go...
 
 Source code for all the projects can be found at this GitHub [wiki](https://github.com/caveofprogramming/advanced-cplusplus/wiki).
 
-All sample code can be found in the repo.
-
+All sample code can be found in the repo. Files generally adopt the name of the tutorial, but some might cover multiple tutorials when it makes sense.
 
 __Bold text__
 
@@ -523,5 +522,20 @@ Additional methods have been added for subtraction and multiplication.
 ### 5.5 Overloading Equality Test<a name="5.5"></a>
 [Go to top](#top)
 
+This shows how to overload both `==` and `!=`.
 
+As opposed to the other operators, `==` needs to be defined within the class itself with a return type `bool`. Also, the operator only takes one explicit argument as the other in an implicit `this` argument.
+``` c++
+bool TYPE::operator==(const TYPE &other) const
+{
+    return (FEATURE1==other.FEATURE1) && (FEATURE2==other.FEATURE2);
+}
+```
+The definition of `!=` can utilize the defined overloaded `==` operator in its test like:
+``` c++
+bool TYPE::operator!=(const TYPE &other) const
+{
+    return !(*this==other);
+}
+```
 
