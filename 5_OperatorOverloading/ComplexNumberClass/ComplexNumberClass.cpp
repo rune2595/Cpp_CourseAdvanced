@@ -63,6 +63,9 @@ int main()
 		cout << "num1 is equal to num2" << endl; // Display if num1 is equal to num2
 	}
 
+	// Demonstrate the overloaded deference operator
+	cout << *num1 << endl; // Display the complex conjugate value pointed to by num1
+
 	return 0;
 }
 

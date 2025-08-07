@@ -100,6 +100,11 @@ bool Complex::operator!=(const Complex& other) const
 	return !(*this == other);
 }
 
+Complex Complex::operator*() const
+{
+	return Complex(real, -imag);
+}
+
 Complex::Complex(const Complex& other) : real(other.real), imag(other.imag) // Copy constructor
 {
 }

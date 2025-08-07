@@ -539,3 +539,13 @@ bool TYPE::operator!=(const TYPE &other) const
 }
 ```
 
+### 5.6 Overloading the Dereference Operator<a name="5.6"></a>
+[Go to top](#top)
+
+It is not only the "normal" operators that can be overloaded. More abstract operators such as the deference operator, `*`, can also be overloaded. The current section describes how and the principles can be translated to other operators as well.
+
+Complex numbers will be used as an example, specifically, the dereference operator will be overloaded to give the complex conjugate.
+
+Similar to the equality test operator, the implmentation should be defined within the class itself with return type `TYPE`, i.e. for the complex number class the return type is `Complex`. Otherwise, implementation is similar to previous cases.
+
+Brackets can also be overloaded. However, a few operators cannot be overloaded (google when neccessary).

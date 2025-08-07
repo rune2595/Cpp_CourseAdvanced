@@ -41,6 +41,7 @@ public:
 
 	bool operator==(const Complex& other) const;
 	bool operator!=(const Complex& other) const;
+	Complex operator*() const;
 
 	void display(); // Method to display the complex number in the format "a + bi"
 };
