@@ -1,7 +1,7 @@
 //--------------------- File Information ---------------------
 // File         : OverloadingLeftBitShift.cpp
 // Author       : Rune Dirk Willen
-// Date         : 31-07-2025
+// Date         : 07-08-2025
 // Description  : Basic C++ program working with a self-
 //				  defined complex number class.
 
