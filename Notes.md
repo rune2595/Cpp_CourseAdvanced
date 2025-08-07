@@ -549,3 +549,101 @@ Complex numbers will be used as an example, specifically, the dereference operat
 Similar to the equality test operator, the implmentation should be defined within the class itself with return type `TYPE`, i.e. for the complex number class the return type is `Complex`. Otherwise, implementation is similar to previous cases.
 
 Brackets can also be overloaded. However, a few operators cannot be overloaded (google when neccessary).
+
+
+## Section 6: Template Classes & Functions<a name="6"></a>
+[Go to top](#top)
+
+### 6.1 Templates - An Important Note<a name="6.1"></a>
+[Go to top](#top)
+
+Importantly, it is not easy to separate the implementation from the actual class for template classes. Normally, prototypes (i.e., how the class works) are put in a header file, and the actual implmentation is put in a `.cpp` file. The compiler then only needs to look at the header to know the class is being used correctly. The `.cpp` file can separately be compiled into a `.o` file. However, this workflow does not apply to template classes.
+
+Regarding templates, C++ needs to see both the implmentation and definition simultaneously to be able to compile. Therefore, it is likely better to define template classes all in the header file. There are ways to separate the implementation from the definition, but they are mostly workarounds. Fx., the implementation can be put in a file that is called something else than `.cpp` (could be `.tpp`) such that it is not compiled directly, then the implementation can be included in the header rather than including the header in the implementation.More ways exists, but all lead to various side effects that can affect the program adversely.
+
+### 6.2 Template Classes<a name="6.2"></a>
+[Go to top](#top)
+
+Template classes allows for definition of classes using types of variables defined by the user. An example of this is the `vector` class, where the types are called in the variable definition.
+
+Are not often useful in C++, but when they are the potential is ver high. The general syntax of a template class is (with a bit of examples that are not mandatory):
+``` c++
+template<class class1 , class class2>
+class testClass
+{
+private:
+    class1 obj1;
+
+public:
+    // below is optional
+    Test(class1 obj)
+    {
+        this->obj = obj;
+    }
+
+    void print()
+    {
+        cout << obj << endl; // assuming stream insertion operator is implemented
+    }
+}
+```
+`testClass` can more or less do anything with `class1`, but is unable to use implemented methods as the type is technically unknown. Methods for interrogation exists to find out more about the input class and its methods, but it is generally bad practice.
+
+### 6.3 Template Functions<a name="6.3"></a>
+[Go to top](#top)
+
+Importantly, template functions can be mixed with template classes. Also, when defining a template (both class and function), the `class` keyword can be changed to `typename` keyword, which is more general and covers primitive types such as `int`.
+
+When using template functions, the type should be stated in `<>` after the functioname and before the input arguments. However, this is not neccessary, as C++ can infer the type from the argument.
+
+__Exercise__
+
+Create a code where the type input actually makes a difference.
+
+Hint: Multiple classes can have same name with different overloaded operators.
+
+### 6.4 Template Functions & Type Inference<a name="6.4"></a>
+[Go to top](#top)
+
+This is related to the exercise in section 6.3.
+
+If two functions exists with the same name and only one is a template function, the nearest match will be used. Inserting the `<>` forces the use of the template function, as it indicates multiple types can be used. Example:
+``` c++
+template<class class1>
+void print(class1 obj1)
+{
+    cout << "Template version: " << obj1 << endl;
+}
+
+void print(int value)
+{
+    cout << "Non-template version: " << value << endl;
+}
+
+int main()
+{
+    print("Hello");  // Uses template
+    print(4);        // Uses non-template
+    print<int>(4);   // Uses template
+    print<>(4);      // Uses template
+
+    return 0;
+}
+```
+There are situations where the code will not compile without the type being stated in the diamond brackets. Removing the argument from the function definition creates this problem, as the type cannot be inferred.
+``` c++
+template<class class1>
+void print()
+{
+    cout << "Template version: " << obj1 << endl;
+}
+
+int main()
+{
+    print();            // Will not work
+    print<>();          // Will not work
+    print<double>();    // Will initialize a double to default and print the value
+
+    return 0;
+}
+```
