@@ -654,3 +654,7 @@ int main()
 
 ### 7.1 Function Pointers<a name="7.1"></a>
 [Go to top](#top)
+
+A pointer to a function can be stated the same way as a pointer to a variable. Commonly used behind the scenes in C++. 
+
+It is important to use brackets to ensure that the dereference operator is connected to the correct variable and the desired behaviour is reflected. However, `*` and `&` are not neccessary to point to functions.
