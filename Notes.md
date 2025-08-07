@@ -647,3 +647,10 @@ int main()
     return 0;
 }
 ```
+
+
+## Section 7: Passing Functions to Functions<a name="7"></a>
+[Go to top](#top)
+
+### 7.1 Function Pointers<a name="7.1"></a>
+[Go to top](#top)
