@@ -657,4 +657,80 @@ int main()
 
 A pointer to a function can be stated the same way as a pointer to a variable. Commonly used behind the scenes in C++. 
 
-It is important to use brackets to ensure that the dereference operator is connected to the correct variable and the desired behaviour is reflected. However, `*` and `&` are not neccessary to point to functions.
+It is important to use brackets to ensure that the dereference operator is connected to the correct variable and the desired behaviour is reflected. However, `*` and `&` are not neccessary to point to functions. An example is shown below:
+``` c++
+// Simple function
+void test()
+{
+    cout << "Hello" << endl;
+}
+
+int main()
+{
+    test(); // Simply call the function
+
+    void (*pTest)(); // Instantiate a pointer. The brackets around '*pTest' indicates that it is actually a function pointer. Otherwise, the dereference operator could be related to the return object of the function rather than the fucntion itself.
+
+    pTest = &test; // Point the pointer at the function using the address operator
+
+    (*pTest)(); // Call the function through the pointer
+
+    return 0;
+}
+```
+As mentioned, not all operators are neccessary. Thereby, the code can be simplified to:
+``` c++
+// Simple function
+void test()
+{
+    cout << "Hello" << endl;
+}
+
+int main()
+{
+    test(); // Simply call the function
+
+    void (*pTest)() = test; // Initialize a pointer
+
+    pTest(); // Call the function through the pointer
+
+    return 0;
+}
+```
+If the function that is called has arguments, the function pointer only needs the argument types as input.
+``` c++
+// Simple function
+void test(int value)
+{
+    cout << "Hello: " << value << endl;
+}
+
+int main()
+{
+    test(7); // Simply call the function
+
+    void (*pTest)(int) = test; // Initialize a pointer
+
+    pTest(8); // Call the function through the pointer
+
+    return 0;
+}
+```
+I.e., there is no need to give the `int` (in this case) a value when initializing the pointer.
+
+### 7.2 Using Function Pointers<a name="7.2"></a>
+[Go to top](#top)
+
+This module aims to implement a function using function pointers. The function implemented is similar to `count_if()`, which is part of `<algorithm>`.
+
+### 7.3 Object Slicing & Polymorphism<a name="7.3"></a>
+[Go to top](#top)
+
+Adding the keyword `virtual` before methods belonging to a class, prompts `c++` to create a function pointer table, to ensure the correct function is used in a parent/child class situation.
+
+Declaring a variable of the superclass as a subclass (see below), initializes the object using the copy constructor of the parent class, even when `virtual` functions are used.
+``` c++
+PARENT p1 = CHILD(); // In this case the parent copy constructor is used
+```
+
+Object slicing 
