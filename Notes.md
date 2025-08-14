@@ -53,8 +53,75 @@ ____
     7.5 [Functors](#7.5)<br>
 8. [C++ 11's Amazing New Features](#8)<br>
     8.1 [Decltype, Typeid, & Name Mangling](#8.1)<br>
-    
-Add more on the go...
+    8.2 [The Auto Keyword](#8.2)<br>
+    8.3 [Range-Based Loops](#8.3)<br>
+    8.4 [Nested Template Classes](#8.4)<br>
+    8.5 [A Ring Buffer Class](#8.5)<br>
+    8.6 [Making Classes Iterable](#8.6)<br>
+    8.7 [Initialization in C++98](#8.7)<br>
+    8.8 [Initialization in C++11](#8.8)<br>
+    8.9 [Initializer Lists](#8.9)<br>
+    8.10 [Object Initializaton, Default & Delete](#8.10)<br>
+    8.11 [Introducing Lambda Expressions](#8.11)<br>
+    8.12 [Lambda Parameters & Return Types](#8.12)<br>
+    8.13 [Lambda Capture Expressions](#8.13)<br>
+    8.14 [Capturing this With Lambdas](#8.14)<br>
+    8.15 [The Standard Function Type](#8.15)<br>
+    8.16 [Mutable Lambdas](#8.16)<br>
+    8.17 [Delegating Constructors](#8.17)<br>
+    8.18 [Elision & Optimization.avi](#8.18)<br>
+    8.19 [Constructors & Memory](#8.19)<br>
+    8.20 [R-Values & L-Values](#8.20)<br>
+    8.21 [L-Value References](#8.21)<br>
+    8.22 [R-Value References](#8.22)<br>
+    8.23 [Move Constructors](#8.23)<br>
+    8.24 [Move Assignment Operators](#8.24)<br>
+    8.25 [Static Casts](#8.25)<br>
+    8.26 [Dynamic Casts](#8.26)<br>
+    8.27 [Reintepret Casts](#8.27)<br>
+    8.28 [Perfect Forwarding](#8.28)<br>
+    8.29 [Bind](#8.29)<br>
+    8.30 [Unique Pointers](#8.30)<br>
+    8.31 [Shared Pointers](#8.31)<br>
+9. [About GUI Programming in C++](#9)<br>
+    9.1 [GUI Programming Overview](#9.1)<br>
+10. [A Project: Drawing Fractal Images](#10)<br>
+    10.1 [Source Code](#10.1)<br>
+    10.2 [Fractal Creator - Hello World](#10.2)<br>
+    10.3 [Bitmap File Headers](#10.3)<br>
+    10.4 [Bitmap Info Headers](#10.4)<br>
+    10.5 [A Bitmap Class](#10.5)<br>
+    10.6 [Bitmap Memory](#10.6)<br>
+    10.7 [Bitmap Header Values](#10.7)<br>
+    10.8 [Writing a Bitmap](#10.8)<br>
+    10.9 [Setting Bitmap Pixels](#10.9)<br>
+    10.10 [Scaling](#10.10)<br>
+    10.11 [A Mandelbrot Class](#10.11)<br>
+    10.12 [The Fractal Algorithm](#10.12)<br>
+    10.13 [Improving the Image](#10.13)<br>
+    10.14 [The Colour Histogram](#10.14)<br>
+    10.15 [Validating the Histogram](#10.15)<br>
+    10.16 [Eliminating Max Iterations](#10.16)<br>
+    10.17 [Storing the Iterations](#10.17)<br>
+    10.18 [Using the Histogram](#10.18)<br>
+    10.19 [Colour Transforms](#10.19)<br>
+    10.20 [A Zoom Class](#10.20)<br>
+    10.21 [The Zoom List Class](#10.21)<br>
+    10.22 [Centering & Scaling](#10.22)<br>
+    10.23 [Applying the Zoom](#10.23)<br>
+    10.24 [Zooming In](#10.24)<br>
+    10.25 [Reorganising Main](#10.25)<br>
+    10.26 [Implementing Fractal Creator](#10.26)<br>
+    10.27 [An RGB Class](#10.27)<br>
+    10.28 [Using the RGB Class](#10.28)<br>
+    10.29 [Specifying Colour Ranges](#10.29)<br>
+    10.30 [Calculating Range Totals](#10.30)<br>
+    10.31 [Checking the Range Totals](#10.31)<br>
+    10.32 [Getting the Pixel Range](#10.32)<br>
+    10.33 [Range-Based Colouring](#10.33)<br>
+    10.34 [More Exercises](#10.34)<br>
+11. [Bonus Videos](#11)<br>
+    11.1 [Multiple Inheritance](#11.1)<br>
 
 ## Section 1: Introduction<a name="1"></a>
 [Go to top](#top)
@@ -743,4 +810,8 @@ As the methods of the parent class does not have an implmentation, the prototype
 
 From the above it follows that it is not possible to create and array of an abstract class. However, it is possible to create a vector, but without the ability of adding objects to it, rendering it useless. Creating an array of pointers to parent objects is possible. Entries should then point to a concrete subclass address.
 
-CREATE CLASS HIERACHY AS EXERCISE, ALSO CREATE ARRAY (DELETE WHEN DONE)
+### 7.5 Functors<a name="7.5"></a>
+[Go to top](#top)
+
+This module will cover pre-C++11 syntax for functor definition. Should also work in C++11, but more efficient methods exist.
+
