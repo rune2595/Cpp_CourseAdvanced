@@ -732,5 +732,15 @@ Declaring a variable of the superclass as a subclass (see below), initializes th
 ``` c++
 PARENT p1 = CHILD(); // In this case the parent copy constructor is used
 ```
+During the copying, the copy constructor is called. Say that the PARENT class has a private feature (f.x., `int one;`) and the CHILD class has another feature (f.x., `int two;`), then the above code will not be able to copy the feature from the child class as it is private. This is called object slicing, and it basically refers to removing the feature of the CHILD as it cannot be retained.
 
-Object slicing 
+### 7.4 Abstract Classes & Pure Virtual Functions<a name="7.4"></a>
+[Go to top](#top)
+
+It does not always make sense to instantiate the superclass when creating subclass objects. Take f.x.animals, any animal will be a particular type of animal, therefore, it should be assigned accordingly when created. This gives rise to abstract classes, which contains methods with no implmentation, i.e., purely virtual functions/methods.
+
+As the methods of the parent class does not have an implmentation, the prototype should be set equal to 0. All pure virtual functions in the parent class needs to have an implementation in the subclass. Also, it is not possible to instantiate a class with pure virtual functions. Only the last subclass, where all virtual functions are implemented, is not an abstract class. The parent and grandparent classes are abstract, since not all virtual functions are implemented. Only non-abstract classes can be instantiated.
+
+From the above it follows that it is not possible to create and array of an abstract class. However, it is possible to create a vector, but without the ability of adding objects to it, rendering it useless. Creating an array of pointers to parent objects is possible. Entries should then point to a concrete subclass address.
+
+CREATE CLASS HIERACHY AS EXERCISE, ALSO CREATE ARRAY (DELETE WHEN DONE)
