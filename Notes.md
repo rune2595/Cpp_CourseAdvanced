@@ -815,3 +815,12 @@ From the above it follows that it is not possible to create and array of an abst
 
 This module will cover pre-C++11 syntax for functor definition. Should also work in C++11, but more efficient methods exist.
 
+
+## Section 8: C++11's Amazing New Features<a name="8"></a>
+[Go to top](#top)
+
+### 8.1 Decltype, Typeid & Name Mangling<a name="8.1"></a>
+[Go to top](#top)
+
+
+
