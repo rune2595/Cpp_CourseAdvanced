@@ -815,12 +815,24 @@ From the above it follows that it is not possible to create and array of an abst
 
 This module will cover pre-C++11 syntax for functor definition. Should also work in C++11, but more efficient methods exist.
 
+Functors are another way of passing code to functions, i.e., an alternative to pointers. Each method has its strengths and weaknesses.
+
+Side note: In C++11 lambda-expressions exist, a syntactic sugar for functor definition.
+
+Typically, a `struct` is used to define a functor as the methods are public by default. The idea is that the functor will contain some code, that can aid a function in its purpose. It is a `class` or a `struct` that overloads an operator.
 
 ## Section 8: C++11's Amazing New Features<a name="8"></a>
 [Go to top](#top)
 
+The following section will handle additional features of C++11, it is therefore important to ensure that the compiler can run C++11.
+
 ### 8.1 Decltype, Typeid & Name Mangling<a name="8.1"></a>
 [Go to top](#top)
 
+To enable the use of typeID it is neccessary to include the header `<typeinfo>`.
 
+The `typeid(OBJECT).name()` function return the type of the parsed object. Fx., `typeid(int value).name()` will return `int`, indicating that `value` is of type `int`, similarly a `double` is indicated by the letter `double`. Some types might have more complicated return codes like strings which will yield `class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >`, which is the actual class definition of a `string` in the `std` library.
 
+The function `decltype(OBJECT)` extracts the type of the parsed object in case it is unknown to the program and needs to attain the type of whatever is parsed.
+
+Note that the name mangling aspect of the lecture might not be relevant for the version of C++ used for implementation.
