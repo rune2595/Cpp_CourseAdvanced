@@ -831,8 +831,49 @@ The following section will handle additional features of C++11, it is therefore 
 
 To enable the use of typeID it is neccessary to include the header `<typeinfo>`.
 
-The `typeid(OBJECT).name()` function return the type of the parsed object. Fx., `typeid(int value).name()` will return `int`, indicating that `value` is of type `int`, similarly a `double` is indicated by the letter `double`. Some types might have more complicated return codes like strings which will yield `class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >`, which is the actual class definition of a `string` in the `std` library.
+The `typeid(OBJECT).name()` function return the type of the parsed object. Fx., `typeid(int value).name()` will return `int`, indicating that `value` is of type `int`, similarly a `double` is indicated by `double`. Some types might have more complicated return codes like strings which will yield `class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >`, which is the actual class definition of a `string` in the `std` library. Note that the descriptions are more complete in newer versions (i.e., in the version presented in the video, a `double` is only indicated by the letter `d`).
 
 The function `decltype(OBJECT)` extracts the type of the parsed object in case it is unknown to the program and needs to attain the type of whatever is parsed.
 
 Note that the name mangling aspect of the lecture might not be relevant for the version of C++ used for implementation.
+
+### 8.2 The Auto Keyword<a name="8.2"></a>
+[Go to top](#top)
+
+`auto` is the default storage class specifier (`static` is another example). Therefore, when a variable is defined like:
+``` c++
+int value = 7;
+```
+it implicitly reads as
+``` c++
+auto int value = 7;
+```
+In even newer versions of C++, even the type is uneccessary, i.e.:
+``` c++
+auto value = 7;
+```
+will automatically recognise that value is an `int`.
+
+`auto` can also be used in function declarations. However, it does need some additional information to recognise the return type. Therefore,
+``` c++
+auto FUNCTION()
+{
+    return 7;
+}
+```
+will not work, as `auto` is not able to deduct the type of the return value. A trailing return type can be used to provide the needed information.
+``` c++
+auto FUNCTION() -> int
+{
+    return 7;
+}
+```
+The arrow and type declaration helps `auto` understand the return type of the function. Making the function a `template` function makes it possible to use `decltype` to obtain the type, thereby, allowing the function to take multiple input types.
+``` c++
+template <class T, class S>
+auto FUNCTION(T value1, S value2) -> decltype(value1 + value2)
+{
+    return value1 + value2;
+}
+```
+In the above, `decltype` will return the type of the sum of the two values. `decltype` is even able to parse functions.
