@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-    string value;
+	string value;
 
 	cout << typeid(value).name() << endl; // Output the type of 'value'
 
@@ -20,7 +20,5 @@ int main()
 
 	cout << typeid(newValue).name() << endl; // Output the type of 'newValue'
 
-    return 0;
+	return 0;
 }
-
-

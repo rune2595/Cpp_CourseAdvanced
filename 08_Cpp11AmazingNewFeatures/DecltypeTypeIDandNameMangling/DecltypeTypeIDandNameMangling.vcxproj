@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7323ee9d-fb56-4982-b4de-730ffa36db94}</ProjectGuid>
-    <RootNamespace>DecltypeTypeID</RootNamespace>
+    <ProjectGuid>{89145b26-3b21-4eb0-8f09-f80e375d0a6d}</ProjectGuid>
+    <RootNamespace>DecltypeTypeIDandNameMangling</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -123,7 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DecltypeTypeID.cpp" />
+    <ClCompile Include="DecltypeTypeIDandNameMangling.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DecltypeTypeID.cpp">
+    <ClCompile Include="DecltypeTypeIDandNameMangling.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
