@@ -1,5 +1,5 @@
 //--------------------- File Information ---------------------
-// File         : DecltypeID
+// File         : TheAutoKeyword.cpp
 // Author       : Rune Dirk Willen
 // Date         : 18-08-2025
 // Description  : Basic C++ program working with decltype and

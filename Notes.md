@@ -877,3 +877,22 @@ auto FUNCTION(T value1, S value2) -> decltype(value1 + value2)
 }
 ```
 In the above, `decltype` will return the type of the sum of the two values. `decltype` is even able to parse functions.
+
+### 8.3 Range-Based Loops<a name="8.3"></a>
+[Go to top](#top)
+
+This module looks into the enhanced for-loop. 
+
+The `auto` keyword makes loops significantly simpler. Basically, it enables the for-loop to work like a python loop. I.e., `for i in range`:
+``` c++
+auto texts = {"one", "two", "three"};
+
+for(auto text: texts)
+{
+    cout << text << endl;
+}
+```
+Here `:` corresponds to the keyword `in` from python. Utilizing the `auto` keyword, no type declaration is needed, even square brackets to indicate array are not needed. This also works for vectors.
+
+The `auto` keyword can also be used in for-loops where an old school iterator is needed. See previous beginners course for example implementations.
+
