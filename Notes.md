@@ -896,3 +896,20 @@ Here `:` corresponds to the keyword `in` from python. Utilizing the `auto` keywo
 
 The `auto` keyword can also be used in for-loops where an old school iterator is needed. See previous beginners course for example implementations.
 
+### 8.4 Nested Template Classes<a name="8.4"></a>
+[Go to top](#top)
+
+A circular buffer is an area of memory that one can write to. If one keeps writing to it, at the end it will return to the beginning. This is often used in multimedia applications, since you can write to the buffer, and keep going when running out of memory by returning to the start. I.e., the compiler will cycle through the same bit of memory. Both ensures the program will keep running, and that a minimum amount of memory is allocated.
+
+Since template classes are to be implemented the `.cpp`-file is not needed, as they should be implemented in the main project `.cpp`-file.
+
+To showcase how this works, the constructor is given an input argument, defining the amount of elements of a certain type the variable can hold. If this number is exceeded, new additions should overwrite the old elements in sequence. See example below:
+``` c++
+TEMPLATE<TYPE> templatetype(3); // templatetype can hold 3 elements of TYPE
+
+// Assuming the TEMPLATE class has an 'add' method
+templatetype.add(element1) // Element is added at postion 1
+templatetype.add(element2) // Element is added at postion 2
+templatetype.add(element3) // Element is added at postion 3
+templatetype.add(element4) // Element is added at postion 1, as the number of elements is exceeded.
+```
